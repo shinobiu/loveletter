@@ -1,6 +1,6 @@
 # Welcome to Love Letter
 
-## Love letter is a small guess the word game writen in C++ for Linux.
+## Love letter is a small "guess the word game" writen in C++ for Linux.
 
 Try your best to figure out the word.</br>
 
@@ -20,13 +20,21 @@ Then run it
 ./loveletter
 ```
 
-### Fisrt Screen just type 1 to play
+### Fisrt Screen, just type 1 to play
 
 ![](./screen/menu.png)
 
 ### Now let's go
 
 ![](./screen/game.png)
+
+### Victory 🥳
+
+![](./screen/victory.png)
+
+### Oh no!
+
+![](./screen/defeat.png)
 
 ### Progress
 
