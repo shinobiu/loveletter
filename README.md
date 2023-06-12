@@ -35,8 +35,8 @@ Then run it
 -   [x] Show mask and number of letters
 -   [x] Life or number of trys
 -   [x] Show letters that have already been played
--   [ ] Check if the letter played is a match inside the word
+-   [x] Check if the letter played is a match inside the word
 -   [ ] Time playing
--   [ ] Points system
+-   [x] Points system
 -   [ ] Multiplayer mode
 -   [ ] Some cool easter egg

@@ -19,30 +19,48 @@ string giveRandWord()
     return words[randIndex];
 }
 
-string maskedWord(string word, int wordSize)
+void maskedWord(string word, int wordSize, string wordMask)
 {
+    clearScreen();
+    cout << "\n\t---------------------------------------------------------\n";
+    cout << "\t\t\t The word has " << wordSize << " letters\n";
+    cout << "\t---------------------------------------------------------\n\n";
     int cont = 0;
-
-    string maskedWord;
-
     cout << "The word is: ";
-
-    while (cont < wordSize)
+    for (cont = 0; cont < wordSize; cont++)
     {
-        usleep(30000);
-        cout << " _ ";
-        fflush(stdout);
-        cont++;
+        cout << wordMask[cont];
     }
-
-    return maskedWord;
 }
 
-void showStatus(int life, string triedLetters)
+void showStatus(int life, string triedLetters, int correctLetters, int points)
 {
     cout << "\n\n\n\t---------------------------------------------------------\n";
+    cout << "\t\tPoints: " << points << "\n";
     cout << "\t\tYou have " << life << " more trys\n";
-    cout << "\t\tYou have tried: " << triedLetters << " those letters\n";
+    cout << "\t\tYou have tried: " << triedLetters << "\n";
+    cout << "\t\tYou got " << correctLetters << " letters right\n";
+
+    cout << "\t---------------------------------------------------------\n\n";
+}
+
+void winScreen(string word, int points)
+{
+    clearScreen();
+    cout << "\n\t---------------------------------------------------------\n";
+    cout << "\t\t\tCongratulations, you got it :)\n";
+    cout << "\t\t\tThe word was: " << word << "\n";
+    cout << "\t\t\tYou got: " << points << " points\n";
+    cout << "\t---------------------------------------------------------\n\n";
+}
+
+void defeatScreen(string word, int points)
+{
+    clearScreen();
+    cout << "\n\t---------------------------------------------------------\n";
+    cout << "\t\t\tBetter luck next time :(\n";
+    cout << "\t\t\tThe word was: " << word << "\n";
+    cout << "\t\t\tYou got: " << points << " points\n";
     cout << "\t---------------------------------------------------------\n\n";
 }
 
@@ -51,33 +69,49 @@ void playAlone()
     clearScreen();
 
     string word = giveRandWord();
-    char letter;
     string triedLetters;
-
+    string playerBullseye;
+    char letter;
     int wordSize = word.size();
-
     int life = 5;
+    int cont = 0;
+    int correctLetters = 0;
+    int playerPoints = 0;
 
-    while (life > 0)
+    for (cont = 0; cont < wordSize; cont++)
     {
-        cout << "\n\t---------------------------------------------------------\n";
-        cout << "\t\t\t\t Good Luck :)\n";
-        cout << "\t---------------------------------------------------------\n\n";
-        maskedWord(word, wordSize);
-        showStatus(life, triedLetters);
-        cout << "\nType a letter: ";
-        cin >> letter;
-        triedLetters = triedLetters + letter + " ";
-        life--;
-        clearScreen();
+        playerBullseye[cont] = '?';
     }
 
-    if (life == 0)
+    while (life > 0 && correctLetters != wordSize)
     {
-        cout << "\n\t---------------------------------------------------------\n";
-        cout << "\t\t\tBetter luck next time :)\n";
-        cout << "\t\t\tThe word was: " << word << "\n";
-        cout << "\t---------------------------------------------------------\n\n";
+        maskedWord(word, wordSize, playerBullseye.data());
+        showStatus(life, triedLetters, correctLetters, playerPoints);
+        cout << "\nType a letter: ";
+        cin >> letter;
+        life--;
+        bool found = triedLetters.find(letter);
+        for (cont = 0; cont < wordSize; cont++)
+        {
+            if (word[cont] == letter && found != 0)
+            {
+                playerBullseye[cont] = letter;
+                correctLetters++;
+                life++;
+                playerPoints += 2 * wordSize;
+            }
+        }
+        triedLetters = triedLetters + letter;
+    }
+
+    if (wordSize == correctLetters)
+    {
+        winScreen(word, playerPoints);
+    }
+
+    if (life <= 0)
+    {
+        defeatScreen(word, playerPoints);
     }
 }
 
