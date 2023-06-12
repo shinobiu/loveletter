@@ -36,7 +36,7 @@ Then run it
 
 ![](./screen/defeat.png)
 
-### Progress
+### Progress 📊
 
 -   [x] Menu with choices
 -   [x] Give a random word
