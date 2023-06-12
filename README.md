@@ -6,7 +6,7 @@ Try your best to figure out the word.</br>
 
 #
 
-### To start playing first we have to compile it.
+### To start playing first we have to compile it. 👨‍💻
 
 Open the folder in your terminal and run this command:
 
@@ -20,11 +20,11 @@ Then run it
 ./loveletter
 ```
 
-### Fisrt Screen, just type 1 to play
+### First Screen, just type 1 to play 
 
 ![](./screen/menu.png)
 
-### Now let's go
+### Now let's go 😎
 
 ![](./screen/game.png)
 
@@ -32,7 +32,7 @@ Then run it
 
 ![](./screen/victory.png)
 
-### Oh no!
+### Oh no! 😢
 
 ![](./screen/defeat.png)
 
