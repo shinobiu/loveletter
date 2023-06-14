@@ -44,7 +44,4 @@ Then run it
 -   [x] Life or number of trys
 -   [x] Show letters that have already been played
 -   [x] Check if the letter played is a match inside the word
--   [ ] Time playing
 -   [x] Points system
--   [ ] Multiplayer mode
--   [ ] Some cool easter egg
